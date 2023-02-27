@@ -1,0 +1,61 @@
+Assumption #1 - Quando não há informações sobre a proximidade do competidor mais próximo, assumi não haver competidores próximos e lancei 200km de distância, o que para uma farmácia é muito longe e não deve influenciar no resultado de vendas, além de permitir manter as demais informações.
+Assumption #2 - Quando não há informações sobre a data de abertura do competidor mais próximo, assumi que ele já existia quando a Rossmann chegou, portanto as vendas não seriam influenciadas pela abertura do concorrente pois ele já existia. Além disso, o período de interesse dessa variável está compreendido pela extensão temporal do dataset (2013 a 2015).
+Assumption #3 - As colunas Na's referentes à participação na campanha foram substituídas por zero apenas para indicar que não estavam participando e limpar as NA's do dataset. Conjunto de dados muito expressivo para dropar.
+
+
+
+
+Hipóteses
+
+1. A Abertura de um concorrente próximo não tem impacto sobre a média de vendas. ******
+Criar uma coluna que conta os meses desde a abertura da loja
+filtrar apenas lojas que tiveram concorrentes abertos dentro do período de observação
+Calcular a média de vendas antes e depois da abertura do novo concorrente
+Usar um gráfico de linhas com um "marco" na data em que o concorrente foi aberto e analisar o comportamento 
+
+2. Lojas com ticket médio menor tem volume de vendas médio maior. ****
+Criar uma coluna que calcule o ticket médio diário das obervações (sales / customers)
+Com um groupby por loja, apurar o ticket médio
+plotar um gráfico de barras com y=vendas e x=ticket médio
+
+3. Lojas com ticket médio menor tem maior número de clientes.
+Agrupar por ticket médio, loja e quantidade de clientes
+Definir um intervalo de ticket médio e classificar as lojas com base nele *****
+De acordo com essa classificação, observar a quantidade de clientes por cada level
+Usar um gráfico de barras para comparação
+
+4. Lojas que participam da promoção estendida vendem mais do que aquelas que não participam.
+Agrupar por promo2, calcular a média de vendas e usar um gráfico de barras para comparação.
+
+5. As lojas vendem mais durante o inverno. *****
+Criar uma coluna que indique a estação do ano em que a observação foi feita
+Agrupar o volume de vendas por estação e comparar com um gráfico de barras
+
+6. Lojas vendem mais durante os feriados escolares.
+Agrupar por school_holiday e calcular a média de vendas para cada level (aberto ou fechado)
+Usar um gráfico de barras para visualização
+
+7. O ticket médio de lojas com assortment superior é maior.
+Agrupar por tipo de assortment e calcular a média de ticket médio entre os diferentes tipos.
+Gráficos de barras na visualização
+
+8. As lojas vendem mais às sextas-feiras e sábados.
+Criar um dict para transformar os dias do mês, que estão em formato ordinal, para o formato nominal.
+Agrupar por dias da semana e calcular a média de vendas diária.
+
+9. As lojas vendem mais durante o mês de início da promo2 (os meses indicados em 'promo_interval' são os iniciais).
+Criar uma maneira de identificar se a obervação de vendas foi realizada nos meses de início da promo2
+    edit(A coluna in_promo2 pode ser usada nessa função)
+Comparar o resultado das vendas nos meses iniciais com os meses seguintes
+usar um gráfico de linhas com um marco temporal no mês de início para verificar se houve picos nesses momentos
+
+10. Lojas com maior variedade de produtos (assortment) vendem mais.
+Agrupar por assortment e calcular o volume médio de vendas dessas lojas.
+
+11. A diferença entre modelos de loja (store_type) não interfere no volume médio de vendas.
+Agrupar por store_type e verificar a média de vendas.
+Usar gráfico de barras para visualização
+
+12. Lojas com sortimento mais simples tem menor número de clientes.
+Agrupar por tipo de sortimento e calcular a média de customers.
+Usar gráfico de barras para visualização.
